@@ -10,14 +10,14 @@ const keycloakConfig: KeycloakConfig = {
 };
 
 // Создаем Keycloak instance с PKCE
-const keycloak = new Keycloak({
-  ...keycloakConfig,
-  pkceMethod: "S256", // Включаем PKCE
-});
+const keycloak = new Keycloak(keycloakConfig);
 
 const App: React.FC = () => {
   return (
-    <ReactKeycloakProvider authClient={keycloak} initOptions={{ pkceMethod: "S256" }}>
+    <ReactKeycloakProvider
+      authClient={keycloak}
+      initOptions={{ pkceMethod: "S256" }} // Включаем PKCE
+    >
       <div className="App">
         <ReportPage />
       </div>
